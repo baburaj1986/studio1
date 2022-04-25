@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="af93a40e-e334-4bd4-baba-459128b76beb" >
+		<http:listener-connection host="localhost" port="8082" />
+	</http:listener-config>
+	<flow name="cric-apiFlow1" doc:id="7bbc8614-0fef-48a2-b72a-3dc3d8bdc4a5" >
+		<logger level="INFO" doc:name="Logger" doc:id="00d1b0bb-eb3b-4056-b73b-f19575f47116" message="hello raj"/>
+	</flow>
+	<flow name="cric-apiFlow" doc:id="f96d06b1-6f45-4f67-af5a-a05fc7986953" >
+		<http:listener doc:name="Listener" doc:id="a7a58858-6ef4-46df-9439-2e9c1ab7de3c" config-ref="HTTP_Listener_config" path="/hello"/>
+		<set-payload value='#["hello rajesh1"]' doc:name="Set Payload" doc:id="5f3632cc-da60-42d7-a9dd-3a6b773744d5" />
+	</flow>
+</mule>
